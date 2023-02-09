@@ -1,7 +1,7 @@
 const invoices = require('./invoices.json');
 const plays = require('./plays.json');
 
-statement = (invoice, plays) => {
+const statement = (invoice, plays) => {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
@@ -28,11 +28,11 @@ statement = (invoice, plays) => {
   return result;
 };
 
-playFor = (performance) => {
+const playFor = (performance) => {
   return plays[performance.playID];
 };
 
-amountFor = (performance) => {
+const amountFor = (performance) => {
   let result = 0;
   switch (playFor(performance).type) {
     case 'tragedy':
