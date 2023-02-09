@@ -12,7 +12,7 @@ statement = (invoice, plays) => {
   }).format;
 
   for (let perf of invoice.performances) {
-    const play = plays[perf.playID];
+    const play = playFor(perf);
     const thisAmount = amountFor(perf, play);
     // add volume credits
     volumeCredits += Math.max(perf.audience - 30, 0);
@@ -27,6 +27,10 @@ statement = (invoice, plays) => {
   result += `You earned ${volumeCredits} credits\n`;
   console.log(result);
   return result;
+};
+
+playFor = (performance) => {
+  return plays[performance.playID];
 };
 
 amountFor = (perf, play) => {
