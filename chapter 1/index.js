@@ -11,9 +11,8 @@ const statement = (invoice, plays) => {
     totalAmount += amountFor(perf);
   }
 
-  let volumeCredits = totalVolumeCredits(invoice.performances);
   result += `Amount owed is ${usd(totalAmount)}\n`;
-  result += `You earned ${volumeCredits} credits\n`;
+  result += `You earned ${totalVolumeCredits(invoice.performances)} credits\n`;
   console.log(result);
   return result;
 };
