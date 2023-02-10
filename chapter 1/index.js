@@ -19,12 +19,12 @@ function ployFor(performance) {
   return plays[performance.playID];
 }
 
-function renderPlainText(data, plays) {
+function renderPlainText(data) {
   let result = `Statement for ${data.customer}\n`;
 
   for (let perf of data.performances) {
     // print line for this order
-    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    result += ` ${perf.play.name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
   }
 
   result += `Amount owed is ${usd(totalAmount())}\n`;
@@ -52,7 +52,7 @@ function renderPlainText(data, plays) {
   function volumeCreditsFor(performance) {
     let result = 0;
     result += Math.max(performance.audience - 30, 0);
-    if (playFor(performance).type === 'comedy') result += Math.floor(performance.audience);
+    if (performance.play.type === 'comedy') result += Math.floor(performance.audience);
     return result;
   }
 
@@ -64,13 +64,9 @@ function renderPlainText(data, plays) {
     }).format(number / 100);
   }
 
-  function playFor(performance) {
-    return plays[performance.playID];
-  }
-
   function amountFor(performance) {
     let result = 0;
-    switch (playFor(performance).type) {
+    switch (performance.play.type) {
       case 'tragedy':
         result = 40000;
         if (performance.audience > 30) {
@@ -85,7 +81,7 @@ function renderPlainText(data, plays) {
         result += 300 * performance.audience;
         break;
       default:
-        throw new Error(`unknown type: ${playFor(performance).type}`);
+        throw new Error(`unknown type: ${performance.play.type}`);
     }
     return result;
   }
