@@ -12,58 +12,58 @@ const statement = (invoice, plays) => {
   }
 
   result += `Amount owed is ${usd(totalAmount)}\n`;
-  result += `You earned ${totalVolumeCredits(invoice.performances)} credits\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;
   console.log(result);
   return result;
-};
 
-const totalVolumeCredits = (performances) => {
-  let result = 0;
-  for (let perf of performances) {
-    result += volumeCreditsFor(perf);
+  function totalVolumeCredits() {
+    let result = 0;
+    for (let perf of invoice.performances) {
+      result += volumeCreditsFor(perf);
+    }
+    return result;
   }
-  return result;
-};
 
-const volumeCreditsFor = (performance) => {
-  let result = 0;
-  result += Math.max(performance.audience - 30, 0);
-  if (playFor(performance).type === 'comedy') result += Math.floor(performance.audience);
-  return result;
-};
-
-const usd = (number) => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  }).format(number / 100);
-};
-
-const playFor = (performance) => {
-  return plays[performance.playID];
-};
-
-const amountFor = (performance) => {
-  let result = 0;
-  switch (playFor(performance).type) {
-    case 'tragedy':
-      result = 40000;
-      if (performance.audience > 30) {
-        result += 1000 * (performance.audience - 30);
-      }
-      break;
-    case 'comedy':
-      result = 30000;
-      if (performance.audience > 20) {
-        result += 1000 + 500 * (performance.audience - 20);
-      }
-      result += 300 * performance.audience;
-      break;
-    default:
-      throw new Error(`unknown type: ${playFor(performance).type}`);
+  function volumeCreditsFor(performance) {
+    let result = 0;
+    result += Math.max(performance.audience - 30, 0);
+    if (playFor(performance).type === 'comedy') result += Math.floor(performance.audience);
+    return result;
   }
-  return result;
+
+  function usd(number) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    }).format(number / 100);
+  }
+
+  function playFor(performance) {
+    return plays[performance.playID];
+  }
+
+  function amountFor(performance) {
+    let result = 0;
+    switch (playFor(performance).type) {
+      case 'tragedy':
+        result = 40000;
+        if (performance.audience > 30) {
+          result += 1000 * (performance.audience - 30);
+        }
+        break;
+      case 'comedy':
+        result = 30000;
+        if (performance.audience > 20) {
+          result += 1000 + 500 * (performance.audience - 20);
+        }
+        result += 300 * performance.audience;
+        break;
+      default:
+        throw new Error(`unknown type: ${playFor(performance).type}`);
+    }
+    return result;
+  }
 };
 
 exports.chapter1 = () => {
