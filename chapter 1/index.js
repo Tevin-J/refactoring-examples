@@ -11,7 +11,12 @@ const statement = (invoice, plays) => {
 
 function enrichPerformance(performance) {
   const result = Object.assign({}, performance);
+  result.play = ployFor(result);
   return result;
+}
+
+function ployFor(performance) {
+  return plays[performance.playID];
 }
 
 function renderPlainText(data, plays) {
