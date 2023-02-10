@@ -13,6 +13,7 @@ function enrichPerformance(performance) {
   const result = Object.assign({}, performance);
   result.play = ployFor(result);
   result.amount = amountFor(result);
+  result.volumeCredits = volumeCreditsFor(result);
   return result;
 }
 
@@ -38,6 +39,13 @@ function amountFor(performance) {
   return result;
 }
 
+function volumeCreditsFor(performance) {
+  let result = 0;
+  result += Math.max(performance.audience - 30, 0);
+  if (performance.play.type === 'comedy') result += Math.floor(performance.audience);
+  return result;
+}
+
 function ployFor(performance) {
   return plays[performance.playID];
 }
@@ -58,7 +66,7 @@ function renderPlainText(data) {
   function totalVolumeCredits() {
     let result = 0;
     for (let perf of data.performances) {
-      result += volumeCreditsFor(perf);
+      result += perf.volumeCredits;
     }
     return result;
   }
@@ -69,13 +77,6 @@ function renderPlainText(data) {
       // print line for this order
       result += perf.amount;
     }
-    return result;
-  }
-
-  function volumeCreditsFor(performance) {
-    let result = 0;
-    result += Math.max(performance.audience - 30, 0);
-    if (performance.play.type === 'comedy') result += Math.floor(performance.audience);
     return result;
   }
 
