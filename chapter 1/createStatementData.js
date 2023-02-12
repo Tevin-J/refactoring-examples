@@ -13,7 +13,7 @@ exports.createStatementData = (invoice, plays) => {
     const result = Object.assign({}, performance);
     result.play = calculator.play;
     result.amount = calculator.amount;
-    result.volumeCredits = volumeCreditsFor(result);
+    result.volumeCredits = calculator.volumeCredits;
     return result;
   }
 
@@ -23,13 +23,6 @@ exports.createStatementData = (invoice, plays) => {
 
   function totalAmount(data) {
     return data.performances.reduce((sum, performance) => sum + performance.amount, 0);
-  }
-
-  function volumeCreditsFor(performance) {
-    let result = 0;
-    result += Math.max(performance.audience - 30, 0);
-    if (performance.play.type === 'comedy') result += Math.floor(performance.audience);
-    return result;
   }
 
   function playFor(performance) {
