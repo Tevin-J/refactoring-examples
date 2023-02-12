@@ -9,9 +9,9 @@ exports.createStatementData = (invoice, plays) => {
   return result;
 
   function enrichPerformance(performance) {
-    const calculator = new PerformanceCalculator(performance);
+    const calculator = new PerformanceCalculator(performance, playFor(performance));
     const result = Object.assign({}, performance);
-    result.play = ployFor(result);
+    result.play = calculator.play;
     result.amount = amountFor(result);
     result.volumeCredits = volumeCreditsFor(result);
     return result;
@@ -54,7 +54,7 @@ exports.createStatementData = (invoice, plays) => {
     return result;
   }
 
-  function ployFor(performance) {
+  function playFor(performance) {
     return plays[performance.playID];
   }
 };
