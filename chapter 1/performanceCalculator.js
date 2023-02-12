@@ -33,4 +33,17 @@ class PerformanceCalculator {
     return result;
   }
 }
-module.exports = PerformanceCalculator;
+
+exports.createPerformanceCalculator = (performance, play) => {
+  switch (play.type) {
+    case 'tragedy':
+      return new TragedyCalculator(performance, play);
+    case 'comedy':
+      return new ComedyCalculator(performance, play);
+    default:
+      throw new Error(`unknown type: ${play.type}`);
+  }
+};
+
+class TragedyCalculator extends PerformanceCalculator {}
+class ComedyCalculator extends PerformanceCalculator {}

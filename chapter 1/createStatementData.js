@@ -1,4 +1,4 @@
-const PerformanceCalculator = require('./performanceCalculator');
+const { createPerformanceCalculator } = require('./performanceCalculator');
 
 exports.createStatementData = (invoice, plays) => {
   const result = {};
@@ -15,10 +15,6 @@ exports.createStatementData = (invoice, plays) => {
     result.amount = calculator.amount;
     result.volumeCredits = calculator.volumeCredits;
     return result;
-  }
-
-  function createPerformanceCalculator(performance, play) {
-    return new PerformanceCalculator(performance, play);
   }
 
   function totalVolumeCredits(data) {
