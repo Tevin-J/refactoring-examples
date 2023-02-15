@@ -2,15 +2,19 @@ const invoices = require('../../data/invoices.json');
 const printOwing = (invoice) => {
   printBanner();
 
-  // calculate outstanding
-  let outstanding = 0;
-  for (const o of invoice.orders) {
-    outstanding += o.amount;
-  }
+  let outstanding = calculateOutstanding(invoice);
 
   recordDueDate(invoice);
   printDetails(invoice, outstanding);
 };
+
+function calculateOutstanding(invoice) {
+  let outstanding = 0;
+  for (const o of invoice.orders) {
+    outstanding += o.amount;
+  }
+  return outstanding;
+}
 
 function recordDueDate(invoice) {
   const today = new Date();
