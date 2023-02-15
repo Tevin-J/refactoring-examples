@@ -1,35 +1,5 @@
-const invoices = require('../../data/invoices.json');
-const printOwing = (invoice) => {
-  printBanner();
-  recordDueDate(invoice);
-  printDetails(invoice, calculateOutstanding(invoice));
-};
+const { example1 } = require('./01_exapmle/index');
 
-function calculateOutstanding(invoice) {
-  let result = 0;
-  for (const o of invoice.orders) {
-    result += o.amount;
-  }
-  return result;
-}
-
-function recordDueDate(invoice) {
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-}
-
-function printDetails(invoice, outstanding) {
-  console.log(`name: ${invoice.customer}`);
-  console.log(`amount: ${outstanding}`);
-  console.log(`due date: ${invoice.dueDate.toLocaleDateString()}`);
-}
-
-function printBanner() {
-  console.log('*****************************');
-  console.log('********Consumer Owes********');
-  console.log('*****************************');
-}
-
-exports.chapter6 = () => {
-  printOwing(invoices[0]);
+module.exports = () => {
+  example1();
 };

@@ -1,4 +1,4 @@
-const invoices = require('../../data/invoices.json');
+const invoices = require('./invoices.json');
 const printOwing = (invoice) => {
   let outstanding = 0;
 
