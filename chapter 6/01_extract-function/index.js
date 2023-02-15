@@ -2,9 +2,7 @@ const invoices = require('../../data/invoices.json');
 const printOwing = (invoice) => {
   let outstanding = 0;
 
-  console.log('*****************************');
-  console.log('********Consumer Owes********');
-  console.log('*****************************');
+  printBanner();
 
   // calculate outstanding
   for (const o of invoice.orders) {
@@ -20,6 +18,12 @@ const printOwing = (invoice) => {
   console.log(`amount: ${outstanding}`);
   console.log(`due date: ${invoice.dueDate.toLocaleDateString()}`);
 };
+
+function printBanner() {
+  console.log('*****************************');
+  console.log('********Consumer Owes********');
+  console.log('*****************************');
+}
 
 exports.chapter6 = () => {
   printOwing(invoices[0]);
