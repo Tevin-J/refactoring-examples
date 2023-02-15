@@ -31,5 +31,6 @@ function printBanner() {
 }
 
 exports.example1 = () => {
+  console.log('\nchapter6, 01_extractFunction, example1');
   printOwing(invoices[0]);
 };

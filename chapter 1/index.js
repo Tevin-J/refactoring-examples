@@ -47,6 +47,7 @@ function usd(number) {
 }
 
 exports.chapter1 = () => {
+  console.log('\nchapter1');
   statement(invoices[0], plays);
   htmlStatement(invoices[0], plays);
 };

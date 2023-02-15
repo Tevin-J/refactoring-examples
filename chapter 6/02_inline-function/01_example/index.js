@@ -5,6 +5,6 @@ function rating(driver) {
 
 exports.example1 = () => {
   const result = rating(driversData.drivers[0]);
-  console.log('\nchapter6, 02_inlineFunction, example1', result);
+  console.log('\nchapter6, 02_inlineFunction, example1\n', result);
   return result;
 };
