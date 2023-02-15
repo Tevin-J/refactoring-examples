@@ -9,12 +9,14 @@ const printOwing = (invoice) => {
     outstanding += o.amount;
   }
 
-  // record due date
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
+  recordDueDate(invoice);
   printDetails(invoice, outstanding);
 };
+
+function recordDueDate(invoice) {
+  const today = new Date();
+  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+}
 
 function printDetails(invoice, outstanding) {
   console.log(`name: ${invoice.customer}`);
