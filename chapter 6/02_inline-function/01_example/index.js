@@ -1,10 +1,6 @@
 const driversData = require('./drivers.json');
 function rating(driver) {
-  return moreThanFiveLateDeliveries(driver) ? 2 : 1;
-}
-
-function moreThanFiveLateDeliveries(driver) {
-  return driver.numberOfLateDeliveries > 5;
+  return driver.numberOfLateDeliveries ? 2 : 1;
 }
 
 exports.example1 = () => {
