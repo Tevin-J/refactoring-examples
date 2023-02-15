@@ -1,0 +1,6 @@
+{
+  "customers": [
+    { "name": "John Doe", "location": "1600 Amphitheatre Parkway" },
+    { "name": "Jane Doe", "location": "Mountain View" }
+  ]
+}
