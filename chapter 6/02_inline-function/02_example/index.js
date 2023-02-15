@@ -3,11 +3,8 @@ const customers = require('./customers.json');
 function reportLines(customer) {
   const lines = [];
   lines.push(['name', customer.name]);
-  gatherCustomerData(lines, customer);
+  lines.push(['location', customer.location]);
   return lines;
-}
-function gatherCustomerData(out, customer) {
-  out.push(['location', customer.location]);
 }
 
 exports.example2 = () => {
