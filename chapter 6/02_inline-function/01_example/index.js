@@ -1,8 +1,6 @@
 const driversData = require('./drivers.json');
 function rating(driver) {
-  const result = moreThanFiveLateDeliveries(driver) ? 2 : 1;
-  console.log('\nchapter6, 02_inlineFunction, example1', result);
-  return result;
+  return moreThanFiveLateDeliveries(driver) ? 2 : 1;
 }
 
 function moreThanFiveLateDeliveries(driver) {
@@ -10,5 +8,7 @@ function moreThanFiveLateDeliveries(driver) {
 }
 
 exports.example1 = () => {
-  rating(driversData.drivers[0]);
+  const result = rating(driversData.drivers[0]);
+  console.log('\nchapter6, 02_inlineFunction, example1', result);
+  return result;
 };
