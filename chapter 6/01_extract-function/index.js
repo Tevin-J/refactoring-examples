@@ -1,10 +1,9 @@
 const invoices = require('../../data/invoices.json');
 const printOwing = (invoice) => {
-  let outstanding = 0;
-
   printBanner();
 
   // calculate outstanding
+  let outstanding = 0;
   for (const o of invoice.orders) {
     outstanding += o.amount;
   }
