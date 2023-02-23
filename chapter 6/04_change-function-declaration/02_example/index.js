@@ -1,13 +1,9 @@
-function circum(radius) {
-  return circumference(radius);
-}
-
 function circumference(radius) {
   return 2 * Math.PI * radius;
 }
 
 exports.renamingFunctionMigrationMechanics = () => {
-  const result = circum(3);
+  const result = circumference(3);
   console.log(
     '\nchapter6, 04_changeFunctionDeclaration, renamingFunctionMigrationMechanics\n',
     result
