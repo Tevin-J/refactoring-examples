@@ -1,0 +1,38 @@
+[
+  {
+    "name": "John",
+    "address": {
+      "state": "NY"
+    }
+  },
+  {
+    "name": "Bill",
+    "address": {
+      "state": "ME"
+    }
+  },
+  {
+    "name": "James",
+    "address": {
+      "state": "NH"
+    }
+  },
+  {
+    "name": "Frank",
+    "address": {
+      "state": "MI"
+    }
+  },
+  {
+    "name": "Stan",
+    "address": {
+      "state": "CT"
+    }
+  },
+  {
+    "name": "Kevin",
+    "address": {
+      "state": "RI"
+    }
+  }
+]
