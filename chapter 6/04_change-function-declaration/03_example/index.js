@@ -1,7 +1,8 @@
 const customers = require('./customers.json');
 
 function inNewEngland(customer) {
-  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(customer.address.state);
+  const stateCode = customer.address.state;
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(stateCode);
 }
 
 exports.changingParameterToOneOfItsProperties = () => {
