@@ -1,8 +1,7 @@
 const customers = require('./customers.json');
 
 function inNewEngland(customer) {
-  const stateCode = customer.address.state;
-  return xxx_inNewEngland(stateCode);
+  return xxx_inNewEngland(customer.address.state);
 }
 
 function xxx_inNewEngland(stateCode) {
