@@ -1,10 +1,10 @@
 exports.example1 = () => {
-  let tpHd = 'untitled';
+  let _title = 'untitled';
   function title() {
-    return tpHd;
+    return _title;
   }
   function setTitle(arg) {
-    tpHd = arg;
+    _title = arg;
   }
 
   let result = '';
@@ -13,5 +13,5 @@ exports.example1 = () => {
   };
   result += `<h1>${title()}</h1>`;
   setTitle(obj['articleTitle']);
-  console.log('\nchapter6, 05_renameVariable, example1\n', result, tpHd);
+  console.log('\nchapter6, 05_renameVariable, example1\n', result, _title);
 };
