@@ -30,11 +30,14 @@ class NumberRange {
   }
 }
 
+const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
+
 function getResult(station, operatingPlan) {
   return readingsOutsideRange(
     station,
     operatingPlan.temperatureFloor,
-    operatingPlan.temperatureCeiling
+    operatingPlan.temperatureCeiling,
+    range
   );
 }
 
