@@ -32,11 +32,11 @@ class NumberRange {
 
 const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
 
-function getResult(station, operatingPlan) {
+function getResult(station) {
   return readingsOutsideRange(station, range);
 }
 
 exports.example1 = () => {
-  const result = getResult(station, operatingPlan);
+  const result = getResult(station);
   console.log('\nchapter6, 06_introduceParameterObject, example1\n', result);
 };
