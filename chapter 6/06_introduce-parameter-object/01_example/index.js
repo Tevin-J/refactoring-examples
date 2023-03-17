@@ -33,13 +33,12 @@ class NumberRange {
   }
 }
 
-const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
-
-function getResult(station) {
+function getResult(station, range) {
   return readingsOutsideRange(station, range);
 }
 
 exports.example1 = () => {
-  const result = getResult(station);
+  const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
+  const result = getResult(station, range);
   console.log('\nchapter6, 06_introduceParameterObject, example1\n', result);
 };
