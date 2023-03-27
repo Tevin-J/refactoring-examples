@@ -10,6 +10,27 @@ const taxThreshold = (year) => {
   return year > 2017 ? 1 : 1.2;
 };
 
+class Reading {
+  constructor(data) {
+    this.customer = data.customer;
+    this.quantity = data.quantity;
+    this.month = data.month;
+    this.year = data.year;
+  }
+  get customer() {
+    return this.customer;
+  }
+  get quantity() {
+    return this.quantity;
+  }
+  get year() {
+    return this.year;
+  }
+  get month() {
+    return this.month;
+  }
+}
+
 const client1 = () => {
   const reading = aquireReading();
   const baseCharge = baseRate(reading.month, reading.year) * reading.quantity;
