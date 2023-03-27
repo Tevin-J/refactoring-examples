@@ -42,9 +42,9 @@ const client1 = () => {
 };
 
 const client2 = () => {
-  const reading = aquireReading();
-  const base = baseRate(reading.month, reading.year) * reading.quantity;
-  const taxableCharge = Math.max(0, base - taxThreshold(reading.year));
+  const rawReading = aquireReading();
+  const reading = new Reading(rawReading);
+  const taxableCharge = Math.max(0, reading.baseCharge - taxThreshold(reading.year));
   console.log('client2', taxableCharge);
 };
 
