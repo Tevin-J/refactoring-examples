@@ -35,8 +35,9 @@ class Reading {
 }
 
 const client1 = () => {
-  const reading = aquireReading();
-  const baseCharge = baseRate(reading.month, reading.year) * reading.quantity;
+  const rawReading = aquireReading();
+  const reading = new Reading(rawReading);
+  const baseCharge = reading.baseCharge;
   console.log('client1', baseCharge);
 };
 
