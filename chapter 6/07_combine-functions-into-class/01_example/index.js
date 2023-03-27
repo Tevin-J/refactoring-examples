@@ -29,6 +29,9 @@ class Reading {
   get month() {
     return this._month;
   }
+  get baseCharge() {
+    return baseRate(this._month, this._year) * this._quantity;
+  }
 }
 
 const client1 = () => {
@@ -47,10 +50,7 @@ const client2 = () => {
 const client3 = () => {
   const rawReading = aquireReading();
   const reading = new Reading(rawReading);
-  const basicChargeAmount = calculateBaseCharge(reading);
-  function calculateBaseCharge(reading) {
-    return baseRate(reading.month, reading.year) * reading.quantity;
-  }
+  const basicChargeAmount = reading.baseCharge;
   console.log('client3', basicChargeAmount);
 };
 
